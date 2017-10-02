@@ -1,36 +1,38 @@
 <template>
-<div>
-     <h1>{{ titulo }}</h1>
-     <ul>
-       <li v-for="foto of fotos">
-          <img :src="foto.url" :alt="foto.title">
-        </li>
-     </ul>
-</div>
+  <div class="corpo">
+       <nav>
+        <ul>
+            <li v-for="route in routes">
+              <router-link :to="route.path ? route.path : '/'">{{ route.titulo }}</router-link>
+            </li>
+        </ul>
+       </nav>
+       <router-view></router-view>
+  </div>
 </template>
 
 <script>
+
+  import { routes } from './routes';
+
 export default {
-  data(){
 
-      return  {
-        titulo: 'Alurapic',
-        fotos: [
-          {
-           url: 'http://tudosobrecachorros.com.br/wp-content/uploads/cachorro-independente.jpg',
-           titulo: 'Cachorro'
-          },
-           {
-           url: 'http://tudosobrecachorros.com.br/wp-content/uploads/cachorro-independente.jpg',
-           titulo: 'Cachorro'
-          }
-        ]
-      }
+  data() {
 
+    return {
+
+      routes
+
+    }
   }
 }
 </script>
 
-<style>
 
+<style>
+  .corpo{
+      font-family: Helvetica, sans-serif;
+      width: 96%;
+      margin: 0 auto;
+  }
 </style>
